@@ -4,10 +4,10 @@ import 'package:route_news_project/category/tab_container.dart';
 
 import '../models/SourceResponse.dart';
 
-class CategoryDetails extends StatelessWidget {
+class CategoryDetailsPage extends StatelessWidget {
   static const String routeName = 'category-details';
 
-  const CategoryDetails({super.key});
+  const CategoryDetailsPage({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:route_news_project/category/news_container.dart';
 import 'package:route_news_project/category/tab_item.dart';
 
 import '../models/SourceResponse.dart';
@@ -35,7 +36,9 @@ class _TabContainerState extends State<TabContainer> {
                       isSelected:
                           selectedIndex == widget.sourcesList.indexOf(source),
                       source: source))
-                  .toList())
+                  .toList()),
+          Expanded(
+              child: NewsContainer(source: widget.sourcesList[selectedIndex]))
         ],
       ),
     );

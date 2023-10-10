@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:route_news_project/api/api_manager.dart';
 
-import 'models/NewsResponse.dart';
-import 'models/SourceResponse.dart';
+import '../models/NewsResponse.dart';
+import '../models/SourceResponse.dart';
 
 class NewsContainer extends StatelessWidget {
   final Source source;
@@ -36,7 +36,12 @@ class NewsContainer extends StatelessWidget {
               ],
             );
           } else {
-            return ListView.builder(itemBuilder: (context, index) {});
+            var newsList = snapshot.data?.articles ?? [];
+            return ListView.builder(
+                itemCount: newsList.length,
+                itemBuilder: (context, index) {
+                  return Text(newsList[index]?.title ?? '');
+                });
           }
         });
   }
