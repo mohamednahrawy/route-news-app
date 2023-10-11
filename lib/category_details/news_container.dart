@@ -3,6 +3,7 @@ import 'package:route_news_project/api/api_manager.dart';
 
 import '../models/NewsResponse.dart';
 import '../models/SourceResponse.dart';
+import 'news_item.dart';
 
 class NewsContainer extends StatelessWidget {
   final Source source;
@@ -36,11 +37,11 @@ class NewsContainer extends StatelessWidget {
               ],
             );
           } else {
-            var newsList = snapshot.data?.articles ?? [];
+            var articlesList = snapshot.data?.articles ?? [];
             return ListView.builder(
-                itemCount: newsList.length,
+                itemCount: articlesList.length,
                 itemBuilder: (context, index) {
-                  return Text(newsList[index]?.title ?? '');
+                  return NewsItem(article: articlesList[index]);
                 });
           }
         });

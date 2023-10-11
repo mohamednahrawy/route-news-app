@@ -7,7 +7,7 @@ import 'SourceResponse.dart';
 class NewsResponse {
   String? status;
   int? totalResults;
-  List<News>? articles;
+  List<Article>? articles;
   String? code;
   String? message;
 
@@ -27,7 +27,7 @@ class NewsResponse {
     if (json['articles'] != null) {
       articles = [];
       json['articles'].forEach((v) {
-        articles?.add(News.fromJson(v));
+        articles?.add(Article.fromJson(v));
       });
     }
   }
@@ -54,7 +54,7 @@ class NewsResponse {
 /// publishedAt : "2023-09-21T14:05:00Z"
 /// content : "Anthony Scaramucci at Messari Mainnet, 2023.Phil Rosen/Insider\r\n<ul>\n<li>Anthony Scaramucci believes the next decade will be \"remarkably bullish\" for bitcoin.</li>\n<li>At the Messari Mainnet conferen… [+2015 chars]"
 
-class News {
+class Article {
   Source? source;
   String? author;
   String? title;
@@ -64,7 +64,7 @@ class News {
   String? publishedAt;
   String? content;
 
-  News({
+  Article({
     this.source,
     this.author,
     this.title,
@@ -75,7 +75,7 @@ class News {
     this.content,
   });
 
-  News.fromJson(dynamic json) {
+  Article.fromJson(dynamic json) {
     source = json['source'] != null ? Source.fromJson(json['source']) : null;
     author = json['author'];
     title = json['title'];
