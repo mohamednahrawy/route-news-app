@@ -1,11 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../models/NewsResponse.dart';
 
 class NewsItem extends StatelessWidget {
   final Article article;
+  late DateTime date;
 
-  const NewsItem({super.key, required this.article});
+  NewsItem({super.key, required this.article});
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +19,19 @@ class NewsItem extends StatelessWidget {
         children: [
           Expanded(
             flex: 2,
-            child: Image.network(
-              article.urlToImage ?? '',
-              fit: BoxFit.fill,
+            child: Container(
+              clipBehavior: Clip.antiAlias,
+              decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(18)),
+              child: CachedNetworkImage(
+                fit: BoxFit.fill,
+                imageUrl: article.urlToImage ?? '',
+                placeholder: (context, url) => Center(
+                    child: CircularProgressIndicator(
+                  color: Theme.of(context).primaryColor,
+                )),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+              ),
             ),
           ),
           Expanded(
@@ -26,13 +39,17 @@ class NewsItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Text(article.source?.name ?? '',
+              Text(article.author ?? '',
                   style: Theme.of(context).textTheme.titleSmall),
               Text(
                 article.title ?? '',
                 style: Theme.of(context).textTheme.titleLarge,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 3,
               ),
-              Text(article.publishedAt ?? '',
+              Text(
+                  DateFormat(' MMMM d EEEE , hh:mm aaa')
+                      .format(DateTime.parse(article.publishedAt ?? '')),
                   textAlign: TextAlign.right,
                   style: Theme.of(context).textTheme.titleSmall)
             ],
