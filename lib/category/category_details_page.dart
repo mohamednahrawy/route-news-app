@@ -28,7 +28,6 @@ class _CategoryDetailsPageState extends State<CategoryDetailsPage> {
         create: (context) => viewModel,
         child: Consumer<CategoryDetailsViewModel>(
             child: const Text('Header'),
-
             ///Template parameter is type of viewModel
             builder: (context, viewModel, child) {
               if (viewModel.errorMessage != null) {
@@ -52,4 +51,32 @@ class _CategoryDetailsPageState extends State<CategoryDetailsPage> {
               }
             }));
   }
+//FutureBuilder<SourceResponse?>(
+//         future: ApiManager.getSources(),
+//         builder: (context, snapshot) {
+//           /// loading, error or Data
+//           if (snapshot.connectionState == ConnectionState.waiting) {
+//             return const Center(child: CircularProgressIndicator());
+//           }
+//           if (snapshot.hasError) {
+//             return Column(
+//               children: [
+//                 const Text('something went wrong'),
+//                 ElevatedButton(onPressed: () {}, child: const Text('Try Again'))
+//               ],
+//             );
+//           }
+//           if (snapshot.data?.status != 'ok') {
+//             return Column(
+//               children: [
+//                 Text(snapshot.data?.message ?? ''),
+//                 ElevatedButton(onPressed: () {}, child: const Text('Try Again'))
+//               ],
+//             );
+//           } else {
+//             var sourcesList = snapshot.data?.sources ?? [];
+//             return TabContainer(sourcesList: sourcesList);
+//           }
+//         },
+//       )
 }
