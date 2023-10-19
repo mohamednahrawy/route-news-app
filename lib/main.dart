@@ -18,9 +18,8 @@ class MyApp extends StatelessWidget {
         initialRoute: HomePage.routeName,
         theme: MyTheme.lightTheme,
         routes: {
-          HomePage.routeName: (context) => const HomePage(),
-          CategoryDetailsPage.routeName: (context) =>
-              const CategoryDetailsPage(),
+          HomePage.routeName: (context) => HomePage(),
+          CategoryDetailsPage.routeName: (context) => CategoryDetailsPage(),
         });
 
   }

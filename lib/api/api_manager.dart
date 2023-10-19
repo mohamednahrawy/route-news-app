@@ -7,12 +7,12 @@ import 'package:route_news_project/models/NewsResponse.dart';
 import '../models/SourceResponse.dart';
 
 class ApiManager {
-  static Future<SourceResponse> getSources() async {
+  static Future<SourceResponse> getSources(String categoryId) async {
     /*
     https://newsapi.org/v2/top-headlines/sources?apiKey=c36ceaa72aa34977b194cb5ea039aed5
      */
     Uri url = Uri.https(ApiConstants.baseUrl, ApiConstants.sourceApi,
-        {'apiKey': 'c36ceaa72aa34977b194cb5ea039aed5'});
+        {'apiKey': 'c36ceaa72aa34977b194cb5ea039aed5', 'category': categoryId});
     try {
       var response = await http.get(url);
       var bodyString = response.body;

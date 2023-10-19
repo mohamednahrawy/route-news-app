@@ -14,11 +14,6 @@ class Category {
     required this.color,
   });
 
-/*
-business entertainment general
-health science sports technology
- */
-
   static List<Category> getCategory() {
     return [
       Category(

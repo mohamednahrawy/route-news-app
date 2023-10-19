@@ -5,8 +5,11 @@ import '../models/category.dart';
 
 class CategoryFragment extends StatelessWidget {
   final List categories = Category.getCategory();
+  final Function onTab;
 
-  CategoryFragment({super.key});
+  /// make all Function and shape it inside the onTab
+
+  CategoryFragment({super.key, required this.onTab});
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +29,14 @@ class CategoryFragment extends StatelessWidget {
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2, mainAxisSpacing: 18, crossAxisSpacing: 18),
               itemCount: categories.length,
-              itemBuilder: (context, index) =>
-                  CategoryItem(category: categories[index], index: index)),
+              itemBuilder: (context, index) => InkWell(
+                  onTap: () {
+                    onTab(categories[index]);
+
+                    /// execute the function and I sent the category with it
+                  },
+                  child:
+                      CategoryItem(category: categories[index], index: index))),
         )
       ]),
     );
