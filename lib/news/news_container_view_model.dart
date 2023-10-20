@@ -5,7 +5,7 @@ import '../models/NewsResponse.dart';
 
 class NewsContainerViewModel extends ChangeNotifier {
   //holds data - handle logic
-  List<Article>? newsList;
+  List<Article>? articlesList;
   String? errorMessage;
 
   void getNewsBySourceId(String sourceId) async {
@@ -14,10 +14,11 @@ class NewsContainerViewModel extends ChangeNotifier {
       if (response.status == 'error') {
         errorMessage = response.message;
       } else {
-        newsList = response.articles;
+        articlesList = response.articles;
       }
     } catch (e) {
       errorMessage = 'Error Loading News List';
     }
+    notifyListeners();
   }
 }

@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:route_news_project/news/news_container_view_model.dart';
 
 import '../models/SourceResponse.dart';
+import 'news_item.dart';
 
 class NewsContainer extends StatefulWidget {
   final Source source;
@@ -15,6 +16,12 @@ class NewsContainer extends StatefulWidget {
 
 class _NewsContainerState extends State<NewsContainer> {
   NewsContainerViewModel viewModel = NewsContainerViewModel();
+
+  @override
+  void initState() {
+    super.initState();
+    viewModel.getNewsBySourceId(widget.source.id ?? '');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +40,19 @@ class _NewsContainerState extends State<NewsContainer> {
                   child: Text('Try Again'))
             ],
           );
-        } else if (viewModel.newsList == null) {
+        } else if (viewModel.articlesList == null) {
           return Center(
             child: CircularProgressIndicator(
               color: Theme.of(context).primaryColor,
             ),
           );
-        } else {}
+        } else {
+          return ListView.builder(
+              itemCount: viewModel.articlesList?.length ?? 0,
+              itemBuilder: (context, index) {
+                return NewsItem(article: viewModel.articlesList![index]);
+              });
+        }
       }),
     );
   }
