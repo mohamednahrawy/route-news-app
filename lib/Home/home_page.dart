@@ -35,7 +35,11 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           centerTitle: true,
           title: Text(
-            'News App',
+            widget.selectedDrawerItem == HomeDrawer.settings
+                ? 'Settings'
+                : widget.selectedCategory == null
+                    ? 'Categories'
+                    : widget.selectedCategory!.title,
             style: Theme.of(context).textTheme.titleLarge,
           ),
         ),
@@ -47,7 +51,7 @@ class _HomePageState extends State<HomePage> {
             ? const SettingsTab()
             : widget.selectedCategory == null
                 ? CategoryFragment(onTab: onCategoryClick)
-                : const CategoryDetailsPage(),
+                : CategoryDetailsPage(),
       )
     ]);
   }
