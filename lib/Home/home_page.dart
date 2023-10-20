@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:route_news_project/Home/home_drawer.dart';
-import 'package:route_news_project/category/category_details_page.dart';
+import 'package:route_news_project/category_details/category_details_page.dart';
 import 'package:route_news_project/settings/settings_tab.dart';
 
 import '../category/category_fragment.dart';
@@ -58,7 +58,6 @@ class _HomePageState extends State<HomePage> {
 
   void onCategoryClick(Category newSelectedCategory) {
     widget.selectedCategory = newSelectedCategory;
-    Navigator.pop(context);
     setState(() {});
   }
 
