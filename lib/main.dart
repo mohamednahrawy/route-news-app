@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:route_news_project/my_theme.dart';
 
 import 'Home/home_page.dart';
-import 'category_details/category_details_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,7 +18,6 @@ class MyApp extends StatelessWidget {
         theme: MyTheme.lightTheme,
         routes: {
           HomePage.routeName: (context) => HomePage(),
-          CategoryDetailsPage.routeName: (context) => CategoryDetailsPage(),
         });
 
   }

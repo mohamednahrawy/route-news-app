@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:route_news_project/category_details/tab_container.dart';
 
+import '../models/category.dart';
 import 'category_details_view_model.dart';
 
 class CategoryDetailsPage extends StatefulWidget {
   static const String routeName = 'category-details';
+  final Category category;
 
-  const CategoryDetailsPage({super.key});
+  const CategoryDetailsPage({super.key, required this.category});
 
   @override
   State<CategoryDetailsPage> createState() => _CategoryDetailsPageState();

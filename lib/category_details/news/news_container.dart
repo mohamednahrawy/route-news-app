@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:route_news_project/news/news_container_view_model.dart';
 
-import '../models/SourceResponse.dart';
+import '../../models/SourceResponse.dart';
+import 'news_container_view_model.dart';
 import 'news_item.dart';
 
 class NewsContainer extends StatefulWidget {
@@ -37,7 +37,7 @@ class _NewsContainerState extends State<NewsContainer> {
                   onPressed: () {
                     viewModel.getNewsBySourceId(widget.source.id ?? '');
                   },
-                  child: Text('Try Again'))
+                  child: const Text('Try Again'))
             ],
           );
         } else if (viewModel.articlesList == null) {

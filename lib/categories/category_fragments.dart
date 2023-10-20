@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:route_news_project/category/category_item.dart';
 
 import '../models/category.dart';
+import 'category_item.dart';
 
-class CategoryFragment extends StatelessWidget {
-  final List categories = Category.getCategory();
+class CategoryFragments extends StatelessWidget {
+  final List categoriesList = Category.getCategory();
   final Function onTab;
 
   /// make all Function and shape it inside the onTab
 
-  CategoryFragment({super.key, required this.onTab});
+  CategoryFragments({super.key, required this.onTab});
 
   @override
   Widget build(BuildContext context) {
-    //categories =  ;
     return Container(
       padding: const EdgeInsets.all(20),
       child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
@@ -28,15 +27,15 @@ class CategoryFragment extends StatelessWidget {
           child: GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2, mainAxisSpacing: 18, crossAxisSpacing: 18),
-              itemCount: categories.length,
+              itemCount: categoriesList.length,
               itemBuilder: (context, index) => InkWell(
                   onTap: () {
-                    onTab(categories[index]);
+                    onTab(categoriesList[index]);
 
                     /// execute the function and I sent the category with it
                   },
-                  child:
-                      CategoryItem(category: categories[index], index: index))),
+                  child: CategoryItem(
+                      category: categoriesList[index], index: index))),
         )
       ]),
     );

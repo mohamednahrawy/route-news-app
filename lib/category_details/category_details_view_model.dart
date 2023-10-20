@@ -6,9 +6,9 @@ import '../models/category.dart';
 
 class CategoryDetailsViewModel extends ChangeNotifier {
   ///includes provider for data and methods for the view
+  Category? category;
   List<Source>? sourcesList;
   String? errorMessage;
-  Category? category;
 
   void getSource() async {
     sourcesList = null;

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-import '../api/api_manager.dart';
-import '../models/NewsResponse.dart';
+import '../../api/api_manager.dart';
+import '../../models/NewsResponse.dart';
 
 class NewsContainerViewModel extends ChangeNotifier {
   //holds data - handle logic

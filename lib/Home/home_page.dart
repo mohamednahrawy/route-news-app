@@ -3,22 +3,25 @@ import 'package:route_news_project/Home/home_drawer.dart';
 import 'package:route_news_project/category_details/category_details_page.dart';
 import 'package:route_news_project/settings/settings_tab.dart';
 
-import '../category/category_fragment.dart';
+import '../categories/category_fragments.dart';
 import '../models/category.dart';
 import '../my_theme.dart';
 
 class HomePage extends StatefulWidget {
   static const String routeName = 'home-page';
   int selectedDrawerItem = HomeDrawer.categories;
-  Category? selectedCategory;
 
-  HomePage({super.key, this.selectedCategory});
+  HomePage({
+    super.key,
+  });
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  Category? selectedCategory;
+
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
@@ -37,9 +40,9 @@ class _HomePageState extends State<HomePage> {
           title: Text(
             widget.selectedDrawerItem == HomeDrawer.settings
                 ? 'Settings'
-                : widget.selectedCategory == null
+                : selectedCategory == null
                     ? 'Categories'
-                    : widget.selectedCategory!.title,
+                    : selectedCategory!.title,
             style: Theme.of(context).textTheme.titleLarge,
           ),
         ),
@@ -49,15 +52,15 @@ class _HomePageState extends State<HomePage> {
         )),
         body: widget.selectedDrawerItem == HomeDrawer.settings
             ? const SettingsTab()
-            : widget.selectedCategory == null
-                ? CategoryFragment(onTab: onCategoryClick)
-                : CategoryDetailsPage(),
+            : selectedCategory == null
+                ? CategoryFragments(onTab: onCategoryClick)
+                : CategoryDetailsPage(category: selectedCategory!),
       )
     ]);
   }
 
   void onCategoryClick(Category newSelectedCategory) {
-    widget.selectedCategory = newSelectedCategory;
+    selectedCategory = newSelectedCategory;
     setState(() {});
   }
 

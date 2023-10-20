@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../models/NewsResponse.dart';
+import '../../models/NewsResponse.dart';
 
 class NewsItem extends StatelessWidget {
   final Article article;
@@ -39,13 +39,17 @@ class NewsItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Text(article.author ?? '',
-                  style: Theme.of(context).textTheme.titleSmall),
+              Text(
+                article.author ?? '',
+                style: Theme.of(context).textTheme.titleSmall,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
               Text(
                 article.title ?? '',
                 style: Theme.of(context).textTheme.titleLarge,
                 overflow: TextOverflow.ellipsis,
-                maxLines: 3,
+                maxLines: 2,
               ),
               Text(
                   DateFormat(' MMMM d EEEE , hh:mm aaa')

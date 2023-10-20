@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:route_news_project/category_details/tab_item.dart';
 
 import '../models/SourceResponse.dart';
-import '../news/news_container.dart';
+import 'news/news_container.dart';
 
 class TabContainer extends StatefulWidget {
   final List<Source> sourcesList;
@@ -29,6 +29,7 @@ class _TabContainerState extends State<TabContainer> {
               indicatorColor: Colors.transparent,
               onTap: (index) {
                 selectedIndex = index;
+                print(index);
                 setState(() {});
               },
               tabs: widget.sourcesList
