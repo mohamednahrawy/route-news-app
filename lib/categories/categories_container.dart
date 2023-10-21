@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import '../models/category.dart';
 import 'category_item.dart';
 
-class CategoryFragments extends StatelessWidget {
+class CategoriesView extends StatelessWidget {
   final List categoriesList = Category.getCategory();
   final Function onTab;
 
   /// make all Function and shape it inside the onTab
 
-  CategoryFragments({super.key, required this.onTab});
+  CategoriesView({super.key, required this.onTab});
 
   @override
   Widget build(BuildContext context) {

@@ -9,6 +9,8 @@ class NewsContainerViewModel extends ChangeNotifier {
   String? errorMessage;
 
   void getNewsBySourceId(String sourceId) async {
+    articlesList = null;
+    errorMessage = null;
     try {
       var response = await ApiManager.getNewsBySourceId(sourceId);
       if (response.status == 'error') {

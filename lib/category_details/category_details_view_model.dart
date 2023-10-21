@@ -14,7 +14,8 @@ class CategoryDetailsViewModel extends ChangeNotifier {
     sourcesList = null;
     errorMessage = null;
     try {
-      var response = await ApiManager.getSources(category?.id ?? "");
+      var response =
+          await ApiManager.getSourcesByCategoryId(category?.id ?? "");
       if (response.status == 'error') {
         errorMessage = response.message;
       } else {

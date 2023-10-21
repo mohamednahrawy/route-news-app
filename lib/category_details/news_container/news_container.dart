@@ -47,11 +47,13 @@ class _NewsContainerState extends State<NewsContainer> {
             ),
           );
         } else {
-          return ListView.builder(
-              itemCount: viewModel.articlesList?.length ?? 0,
-              itemBuilder: (context, index) {
-                return NewsItem(article: viewModel.articlesList![index]);
-              });
+          return Expanded(
+            child: ListView.builder(
+                itemCount: viewModel.articlesList?.length ?? 0,
+                itemBuilder: (context, index) {
+                  return NewsItem(article: viewModel.articlesList![index]);
+                }),
+          );
         }
       }),
     );

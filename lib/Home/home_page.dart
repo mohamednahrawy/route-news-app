@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:route_news_project/Home/home_drawer.dart';
-import 'package:route_news_project/category_details/category_details_page.dart';
+import 'package:route_news_project/category_details/category_details_view.dart';
 import 'package:route_news_project/settings/settings_tab.dart';
 
-import '../categories/category_fragments.dart';
+import '../categories/categories_container.dart';
 import '../models/category.dart';
 import '../my_theme.dart';
 
@@ -53,8 +53,8 @@ class _HomePageState extends State<HomePage> {
         body: widget.selectedDrawerItem == HomeDrawer.settings
             ? const SettingsTab()
             : selectedCategory == null
-                ? CategoryFragments(onTab: onCategoryClick)
-                : CategoryDetailsPage(category: selectedCategory!),
+                ? CategoriesView(onTab: onCategoryClick)
+                : CategoryDetailsView(category: selectedCategory!),
       )
     ]);
   }
@@ -65,6 +65,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void onDrawerItemClick(int newSelectedDrawerItem) {
+    selectedCategory = null;
     widget.selectedDrawerItem = newSelectedDrawerItem;
     Navigator.pop(context);
     setState(() {});
