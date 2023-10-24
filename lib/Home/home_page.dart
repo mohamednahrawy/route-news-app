@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
   void onDrawerItemClick(int newSelectedDrawerItem) {
     selectedCategory = null;
     widget.selectedDrawerItem = newSelectedDrawerItem;
-    Navigator.pop(context);
+    Navigator.of(context).pop();
     setState(() {});
   }
 }

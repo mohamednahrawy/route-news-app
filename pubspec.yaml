@@ -39,6 +39,7 @@ dependencies:
   cached_network_image: ^3.3.0
   intl: ^0.18.1
   provider: ^6.0.5
+  timeago: ^3.5.0
 
 dev_dependencies:
   flutter_test:

@@ -25,6 +25,7 @@ class _NewsContainerState extends State<NewsContainer> {
 
   @override
   Widget build(BuildContext context) {
+    viewModel.getNewsBySourceId(widget.source.id ?? '');
     return ChangeNotifierProvider(
       create: (context) => viewModel,
       child: Consumer<NewsContainerViewModel>(
@@ -36,26 +37,26 @@ class _NewsContainerState extends State<NewsContainer> {
               ElevatedButton(
                   onPressed: () {
                     viewModel.getNewsBySourceId(widget.source.id ?? '');
-                  },
-                  child: const Text('Try Again'))
-            ],
-          );
-        } else if (viewModel.articlesList == null) {
-          return Center(
-            child: CircularProgressIndicator(
-              color: Theme.of(context).primaryColor,
-            ),
-          );
-        } else {
-          return Expanded(
-            child: ListView.builder(
-                itemCount: viewModel.articlesList?.length ?? 0,
-                itemBuilder: (context, index) {
-                  return NewsItem(article: viewModel.articlesList![index]);
-                }),
-          );
-        }
-      }),
+                      },
+                      child: const Text('Try Again'))
+                ],
+              );
+            } else if (viewModel.articlesList == null) {
+              return Center(
+                child: CircularProgressIndicator(
+                  color: Theme.of(context).primaryColor,
+                ),
+              );
+            } else {
+              return Expanded(
+                child: ListView.builder(
+                    itemCount: viewModel.articlesList?.length ?? 0,
+                    itemBuilder: (context, index) {
+                      return NewsItem(article: viewModel.articlesList![index]);
+                    }),
+              );
+            }
+          }),
     );
   }
 }

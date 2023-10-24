@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:route_news_project/article_detaling/article_detailing_view.dart';
 import 'package:route_news_project/my_theme.dart';
 
 import 'Home/home_page.dart';
@@ -18,6 +19,8 @@ class MyApp extends StatelessWidget {
         theme: MyTheme.lightTheme,
         routes: {
           HomePage.routeName: (context) => HomePage(),
+          ArticleDetailingView.routeName: (context) =>
+              const ArticleDetailingView(),
         });
 
   }
