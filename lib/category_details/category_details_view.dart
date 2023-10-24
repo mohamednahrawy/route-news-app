@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:route_news_project/category_details/tab_container/tab_container.dart';
 
 import '../models/category.dart';
-import 'category_details_view_model.dart';
+import 'cubit/category_details_view_model.dart';
 
 class CategoryDetailsView extends StatefulWidget {
   static const String routeName = 'category-details';
