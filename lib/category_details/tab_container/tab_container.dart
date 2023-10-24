@@ -3,14 +3,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:route_news_project/category_details/tab_container/cubit/tab_container_view_model.dart';
 import 'package:route_news_project/category_details/tab_container/tab_item.dart';
 
+import '../../models/SourceResponse.dart';
 import '../../models/category.dart';
 import '../cubit/states.dart';
 import '../news_container/news_container.dart';
 
 class TabContainer extends StatefulWidget {
   final Category? category;
+  final List<Source> sourceList;
 
-  const TabContainer({super.key, required this.category});
+  const TabContainer(
+      {super.key, required this.category, required this.sourceList});
 
   @override
   State<TabContainer> createState() => _TabContainerState();
