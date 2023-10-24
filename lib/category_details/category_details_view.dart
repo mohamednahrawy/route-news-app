@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:route_news_project/category_details/cubit/states.dart';
 import 'package:route_news_project/category_details/tab_container/tab_container.dart';
 
 import '../models/category.dart';
@@ -20,37 +21,30 @@ class _CategoryDetailsViewState extends State<CategoryDetailsView> {
 
   @override
   void initState() {
-    viewModel.getSource();
+    viewModel.getSourceByCategoryId(widget.category.id);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-        create: (context) => viewModel,
-        child: Consumer<CategoryDetailsViewModel>(
-            child: const Text('Header'),
-            ///Template parameter is type of viewModel
-            builder: (context, viewModel, child) {
-              if (viewModel.errorMessage != null) {
-                return Column(
-                  children: [
-                    child!,
-                    Text(viewModel.errorMessage ?? ''),
-                    ElevatedButton(
-                        onPressed: () {
-                          viewModel.getSource();
-                        },
-                        child: const Text('Try Again'))
-                  ],
-                );
-              } else if (viewModel.sourcesList == null) {
-                return Center(
-                    child: CircularProgressIndicator(
-                        color: Theme.of(context).primaryColor));
-              } else {
-                return TabContainer(category: widget.category);
-              }
-            }));
+    return BlocBuilder<CategoryDetailsViewModel, SourceStates>(
+        bloc: viewModel,
+        builder: (context, state) {
+          if (state is SourceLoadingState) {
+            return Center(
+              child: CircularProgressIndicator(
+                color: Theme.of(context).primaryColor,
+              ),
+            );
+          } else if (state is SourceErrorState) {
+            return Column(
+              children: [
+                Text(state.errorMessage),
+              ],
+            );
+          } else {
+            return TabContainer(category: widget.category);
+          }
+        });
   }
 }
