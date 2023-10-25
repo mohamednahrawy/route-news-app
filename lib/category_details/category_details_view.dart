@@ -42,8 +42,11 @@ class _CategoryDetailsViewState extends State<CategoryDetailsView> {
                 Text(state.errorMessage),
               ],
             );
+          } else if (state is SourceSuccessState) {
+            return TabContainer(
+                category: widget.category, sourceList: state.sourceList);
           } else {
-            return TabContainer(category: widget.category);
+            return Container();
           }
         });
   }
