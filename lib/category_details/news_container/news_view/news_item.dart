@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../models/NewsResponse.dart';
+import '../../../models/NewsResponse.dart';
 
 class NewsItem extends StatelessWidget {
   final Article article;

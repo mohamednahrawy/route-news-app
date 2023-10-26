@@ -7,8 +7,7 @@ import 'package:route_news_project/models/NewsResponse.dart';
 import '../models/SourceResponse.dart';
 
 class ApiManager {
-  static Future<SourceResponse> getSourcesByCategoryId(
-      String categoryId) async {
+  Future<SourceResponse> getSourcesByCategoryId(String categoryId) async {
     /*
     https://newsapi.org/v2/top-headlines/sources?apiKey=c36ceaa72aa34977b194cb5ea039aed5
      */
@@ -24,7 +23,7 @@ class ApiManager {
     }
   }
 
-  static Future<NewsResponse> getNewsBySourceId(String sourceId) async {
+  Future<NewsResponse> getNewsBySourceId(String sourceId) async {
     /*
     https://newsapi.org/v2/everything?q=bitcoin&apiKey=c36ceaa72aa34977b194cb5ea039aed5
      */

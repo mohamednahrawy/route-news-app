@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:route_news_project/category_details/tab_container/tab_item.dart';
 import '../../models/SourceResponse.dart';
 import '../../models/category.dart';
-import '../news_container/news_container.dart';
+import '../news_container/news_view/news_container.dart';
 
 class TabContainer extends StatefulWidget {
   final Category? category;
