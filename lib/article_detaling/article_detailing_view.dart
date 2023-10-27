@@ -74,11 +74,11 @@ class _ArticleDetailingViewState extends State<ArticleDetailingView> {
                               .titleMedium
                               ?.copyWith(fontWeight: FontWeight.bold),
                         ),
-                        Icon(Icons.arrow_right)
+                        const Icon(Icons.arrow_right)
                       ],
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                 ],
               ))
         ]),
