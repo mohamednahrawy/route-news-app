@@ -1,12 +1,22 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:route_news_project/api/api_constants.dart';
 import 'package:route_news_project/models/NewsResponse.dart';
 
 import '../models/SourceResponse.dart';
 
 class ApiManager {
+  ///todo: singleton Pattern
+  ///todo: you can make the constructor private also to prevent anyone to make an object
+  ///todo: of the ApiManager by:    ApiManager._(); you close making any object of the class
+  static ApiManager? _instance; //null - ApiManager()
+
+  static ApiManager getInstance() {
+    ///todo: null aware assignment
+    _instance ??= ApiManager();
+    return _instance!;
+  }
+
   Future<SourceResponse> getSourcesByCategoryId(String categoryId) async {
     /*
     https://newsapi.org/v2/top-headlines/sources?apiKey=c36ceaa72aa34977b194cb5ea039aed5
@@ -38,4 +48,10 @@ class ApiManager {
       throw (e);
     }
   }
+}
+
+class ApiConstants {
+  static const String baseUrl = 'newsapi.org';
+  static const String sourceApi = '/v2/top-headlines/sources';
+  static const String newsApi = '/v2/everything';
 }

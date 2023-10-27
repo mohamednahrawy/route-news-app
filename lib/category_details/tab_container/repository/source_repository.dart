@@ -1,4 +1,5 @@
 import 'package:route_news_project/models/SourceResponse.dart';
+
 import 'data_source/source_remote_data_source.dart';
 
 //todo:abstract class for the repository (interface) includes abstract methods only
@@ -16,4 +17,8 @@ class SourceRepositoryImpl implements SourceRepositoryContract {
   Future<SourceResponse?> getSourceByCategoryId(String categoryId) {
     return remoteDataSource.getSourcesByCategoryId(categoryId);
   }
+}
+
+SourceRepositoryContract injectSourceRepositoryContract() {
+  return SourceRepositoryImpl(remoteDataSource: injectSourceRemoteDataSource());
 }

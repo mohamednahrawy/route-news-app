@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../models/SourceResponse.dart';
-import '../../my_theme.dart';
+import '../../../models/SourceResponse.dart';
+import '../../../my_theme.dart';
 
 class TabItem extends StatelessWidget {
   final bool isSelected;

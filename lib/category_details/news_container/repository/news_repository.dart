@@ -15,3 +15,7 @@ class NewsRepositoryImpl implements NewsRepositoryContract {
     return remoteDataSource.getNewsBySourceId(sourceId);
   }
 }
+
+NewsRepositoryContract injectNewsRepositoryContract() {
+  return NewsRepositoryImpl(remoteDataSource: injectNewsRemoteDataSource());
+}

@@ -1,17 +1,13 @@
 import 'package:bloc/bloc.dart';
 import 'package:route_news_project/category_details/news_container/cubit/states.dart';
-import '../../../api/api_manager.dart';
-import '../news_repository/data_source/news_remote_data_source.dart';
-import '../news_repository/news_repository.dart';
+
+import '../repository/news_repository.dart';
 
 class NewsContainerViewModel extends Cubit<NewsStates> {
-  NewsRepositoryContract newsRepositoryContract = NewsRepositoryImpl(
-      remoteDataSource: NewsRemoteDataSourceImpl(apiManager: ApiManager()));
+  NewsRepositoryContract newsRepositoryContract;
 
-  NewsContainerViewModel() : super(NewsLoadingState());
-
-  // {newsRepositoryContract = NewsRepositoryImpl(
-  //     remoteDataSource: NewsRemoteDataSourceImpl(apiManager: ApiManager()));}
+  NewsContainerViewModel({required this.newsRepositoryContract})
+      : super(NewsLoadingState());
 
   void getNewsBySourceId(String sourceId) async {
     try {

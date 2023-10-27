@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
-import 'package:route_news_project/category_details/cubit/states.dart';
+import 'package:route_news_project/category_details/tab_container/cubit/states.dart';
 
 import '../../../models/SourceResponse.dart';
 import '../cubit/news_container_view_model.dart';
 import '../cubit/states.dart';
+import '../repository/news_repository.dart';
 import 'news_item.dart';
 
 class NewsContainer extends StatefulWidget {
@@ -18,7 +18,8 @@ class NewsContainer extends StatefulWidget {
 }
 
 class _NewsContainerState extends State<NewsContainer> {
-  NewsContainerViewModel viewModel = NewsContainerViewModel();
+  NewsContainerViewModel viewModel = NewsContainerViewModel(
+      newsRepositoryContract: injectNewsRepositoryContract());
 
   @override
   void initState() {
@@ -50,35 +51,3 @@ class _NewsContainerState extends State<NewsContainer> {
         });
   }
 }
-//ChangeNotifierProvider(
-//       create: (context) => viewModel,
-//       child: Consumer<NewsContainerViewModel>(
-//           builder: (context, viewModel, child) {
-//         if (viewModel.errorMessage != null) {
-//           return Column(
-//             children: [
-//               Text(viewModel.errorMessage!),
-//               ElevatedButton(
-//                   onPressed: () {
-//                     viewModel.getNewsBySourceId(widget.source.id ?? '');
-//                   },
-//                   child: const Text('Try Again'))
-//             ],
-//           );
-//         } else if (viewModel.articlesList == null) {
-//           return Center(
-//             child: CircularProgressIndicator(
-//               color: Theme.of(context).primaryColor,
-//             ),
-//           );
-//         } else {
-//           return Expanded(
-//             child: ListView.builder(
-//                 itemCount: viewModel.articlesList?.length ?? 0,
-//                 itemBuilder: (context, index) {
-//                   return NewsItem(article: viewModel.articlesList![index]);
-//                 }),
-//           );
-//         }
-//       }),
-//     )

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:route_news_project/category_details/cubit/states.dart';
-import 'package:route_news_project/category_details/tab_container/tab_container.dart';
+import 'package:route_news_project/category_details/tab_container/cubit/states.dart';
+import 'package:route_news_project/category_details/tab_container/repository/source_repository.dart';
+import 'package:route_news_project/category_details/tab_container/tabs_view/tab_container.dart';
 
-import '../models/category.dart';
-import 'cubit/category_details_view_model.dart';
+import '../../../models/category.dart';
+import '../cubit/category_details_view_model.dart';
 
 class CategoryDetailsView extends StatefulWidget {
   static const String routeName = 'category-details';
@@ -17,7 +18,8 @@ class CategoryDetailsView extends StatefulWidget {
 }
 
 class _CategoryDetailsViewState extends State<CategoryDetailsView> {
-  CategoryDetailsViewModel viewModel = CategoryDetailsViewModel();
+  CategoryDetailsViewModel viewModel = CategoryDetailsViewModel(
+      repositoryContract: injectSourceRepositoryContract());
 
   @override
   void initState() {

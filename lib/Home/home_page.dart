@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:route_news_project/Home/home_drawer.dart';
-import 'package:route_news_project/category_details/category_details_view.dart';
+import 'package:route_news_project/category_details/tab_container/tabs_view/category_details_view.dart';
 import 'package:route_news_project/settings/settings_tab.dart';
 
 import '../categories/categories_container.dart';
