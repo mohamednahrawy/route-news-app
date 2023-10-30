@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:route_news_project/models/NewsResponse.dart';
 
 import '../models/SourceResponse.dart';
+import 'api_constants.dart';
 
 class ApiManager {
   ///todo: singleton Pattern
@@ -48,10 +49,4 @@ class ApiManager {
       throw (e);
     }
   }
-}
-
-class ApiConstants {
-  static const String baseUrl = 'newsapi.org';
-  static const String sourceApi = '/v2/top-headlines/sources';
-  static const String newsApi = '/v2/everything';
 }
