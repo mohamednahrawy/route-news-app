@@ -35,26 +35,13 @@ class _HomePageState extends State<HomePage> {
           )),
       Scaffold(
         backgroundColor: Colors.transparent,
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text(
-            widget.selectedDrawerItem == HomeDrawer.settings
-                ? 'Settings'
-                : selectedCategory == null
-                    ? 'Categories'
-                    : selectedCategory!.title,
-            style: Theme.of(context).textTheme.titleLarge,
-          ),
-        ),
-        drawer: Drawer(
-            child: HomeDrawer(
-          onDrawerItemClick: onDrawerItemClick,
-        )),
+        appBar: buildAppBar(),
+        drawer: buildDrawer(),
         body: widget.selectedDrawerItem == HomeDrawer.settings
             ? const SettingsTab()
             : selectedCategory == null
-                ? CategoriesView(onTab: onCategoryClick)
-                : CategoryDetailsView(category: selectedCategory!),
+            ? CategoriesView(onTab: onCategoryClick)
+            : CategoryDetailsView(category: selectedCategory!),
       )
     ]);
   }
@@ -70,4 +57,26 @@ class _HomePageState extends State<HomePage> {
     Navigator.pop(context);
     setState(() {});
   }
+
+  buildAppBar() =>
+      AppBar(
+        centerTitle: true,
+        title: Text(
+          widget.selectedDrawerItem == HomeDrawer.settings
+              ? 'Settings'
+              : selectedCategory == null
+              ? 'Categories'
+              : selectedCategory!.title,
+          style: Theme
+              .of(context)
+              .textTheme
+              .titleLarge,
+        ),
+      );
+
+  buildDrawer() =>
+      Drawer(
+          child: HomeDrawer(
+            onDrawerItemClick: onDrawerItemClick,
+          ));
 }

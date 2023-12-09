@@ -10,11 +10,13 @@ class ApiManager {
   ///todo: singleton Pattern
   ///todo: you can make the constructor private also to prevent anyone to make an object
   ///todo: of the ApiManager by:    ApiManager._(); you close making any object of the class
-  static ApiManager? _instance; //null - ApiManager()
+  static ApiManager? _instance;
+
+  ApiManager._(); //null - ApiManager()
 
   static ApiManager getInstance() {
     ///todo: null aware assignment
-    _instance ??= ApiManager();
+    _instance ??= ApiManager._();
     return _instance!;
   }
 
